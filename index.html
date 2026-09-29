@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="El Mundo de Melanny — Viajes, lectura, taekwondo, idiomas y pasatiempos.">
+    <meta name="theme-color" content="#7C3AED">
+    <title>El Mundo de Melanny ✨</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ====== FONDO DECORATIVO ====== -->
+    <div class="bg-decoration" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+        <div class="stars">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <span class="loader-emoji">✨</span>
+            <p>Cargando mi mundo...</p>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ====== NAVBAR ====== -->
+    <header class="navbar" id="navbar">
+        <a href="#" class="logo" data-target="seccion-mundo">
+            <!-- LOGO SVG PERSONALIZADO -->
+            <svg class="logo-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                    <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#7C3AED"/>
+                        <stop offset="50%" stop-color="#FF2E93"/>
+                        <stop offset="100%" stop-color="#FFD93D"/>
+                    </linearGradient>
+                    <radialGradient id="logoShine" cx="35%" cy="30%" r="60%">
+                        <stop offset="0%" stop-color="white" stop-opacity="0.85"/>
+                        <stop offset="60%" stop-color="white" stop-opacity="0.1"/>
+                        <stop offset="100%" stop-color="white" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <ellipse cx="30" cy="30" rx="29" ry="9" fill="none" stroke="url(#logoGrad)" stroke-width="1.6" opacity="0.55" transform="rotate(-22 30 30)"/>
+                <circle cx="30" cy="30" r="21" fill="url(#logoGrad)"/>
+                <circle cx="30" cy="30" r="21" fill="url(#logoShine)"/>
+                <ellipse cx="30" cy="30" rx="29" ry="9" fill="none" stroke="url(#logoGrad)" stroke-width="1.6" opacity="0.85" transform="rotate(22 30 30)"/>
+                <path d="M30 20 L32.4 27.4 L40 27.4 L33.8 32 L36.2 39.4 L30 34.8 L23.8 39.4 L26.2 32 L20 27.4 L27.6 27.4 Z" fill="white"/>
+                <circle cx="49" cy="15" r="2.2" fill="#FFD93D"/>
+                <circle cx="11" cy="45" r="1.8" fill="#00D9C0"/>
+            </svg>
+            <span class="logo-text">El Mundo de <span class="logo-accent">Melanny</span></span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <button class="nav-btn active" data-target="seccion-mundo">
+                <span class="nav-icon"><i class="fa-solid fa-earth-americas"></i></span>
+                <span class="nav-label">Mi Mundo</span>
+                <span class="nav-glow"></span>
+            </button>
+            <button class="nav-btn" data-target="seccion-lectura">
+                <span class="nav-icon"><i class="fa-solid fa-book-open"></i></span>
+                <span class="nav-label">Mi Lectura</span>
+                <span class="nav-glow"></span>
+            </button>
+            <button class="nav-btn" data-target="seccion-pasatiempos">
+                <span class="nav-icon"><i class="fa-solid fa-icons"></i></span>
+                <span class="nav-label">Pasatiempos</span>
+                <span class="nav-glow"></span>
+            </button>
+            <button class="nav-btn" data-target="seccion-sobre-mi">
+                <span class="nav-icon"><i class="fa-solid fa-heart"></i></span>
+                <span class="nav-label">Sobre mí</span>
+                <span class="nav-glow"></span>
+            </button>
+        </nav>
+
+        <div class="nav-actions">
+            <!-- BOTÓN MODO OSCURO -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                <span class="theme-track">
+                    <i class="fa-solid fa-sun theme-icon sun"></i>
+                    <i class="fa-solid fa-moon theme-icon moon"></i>
+                    <span class="theme-thumb"></span>
+                </span>
+            </button>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <!-- ============ SECCIÓN 1: MI MUNDO ============ -->
+        <section id="seccion-mundo" class="content-section active">
+
+            <div class="hero-banner" id="heroBanner" style="background-image: url('imagenes/paron.jpg');">
+                <div class="hero-overlay"></div>
+                <div class="hero-content reveal">
+                    <span class="badge-hero">🌎 Grado 9° • Apasionada por explorar</span>
+                    <h1>"El mundo es demasiado grande para quedarse en un solo lugar"</h1>
+                    <p>Viajar es descubrir que cada ruta, montaña y lugar tiene una historia que contar.</p>
+                    <div class="hero-cta">
+                        <button class="btn-primary" data-target="seccion-lectura">
+                            <i class="fa-solid fa-book"></i> Ver mis lecturas
+                        </button>
+                        <button class="btn-ghost" data-target="seccion-sobre-mi">
+                            <i class="fa-solid fa-hand-sparkles"></i> Conóceme
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-scroll-hint"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+
+            <!-- Machu Picchu -->
+            <div class="travel-card reveal" data-tilt>
+                <div class="travel-img">
+                    <img src="imagenes/machu_pichu.jpg" alt="Machu Picchu" loading="lazy">
+                    <span class="img-badge">🏔️ Perú</span>
+                </div>
+                <div class="travel-info">
+                    <h2><i class="fa-solid fa-compass"></i> Historias & Maravillas del Mundo</h2>
+                    <p>Apasionada por la historia antigua, las civilizaciones y los grandes paisajes. Machu Picchu representa la fusión perfecta entre la grandeza histórica y la belleza natural.</p>
+                    <div class="info-tags">
+                        <span>Historia</span>
+                        <span>Civilizaciones</span>
+                        <span>Naturaleza</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Taekwondo ampliado -->
+            <div class="section-block tkd-block reveal">
+                <div class="block-text">
+                    <h2><i class="fa-solid fa-user-ninja"></i> Taekwondo & Arte Marcial</h2>
+                    <p>Disciplina, fuerza, concentración y espíritu indomable. El Taekwondo no es solo un deporte, es una filosofía de constante superación personal.</p>
+
+                    <div class="tkd-history">
+                        <span class="tkd-year">1955</span>
+                        <div>
+                            <h4>Origen en Corea</h4>
+                            <p>Nació tras la Segunda Guerra Mundial uniendo técnicas del <em>Taekkyon</em> y el <em>Karate</em>. El General Choi Hong Hi es considerado su fundador.</p>
+                        </div>
+                    </div>
+
+                    <div class="tkd-tenets">
+                        <h4>Los 5 principios del Taekwondo</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-handshake"></i> Cortesía</li>
+                            <li><i class="fa-solid fa-scale-balanced"></i> Integridad</li>
+                            <li><i class="fa-solid fa-fire"></i> Perseverancia</li>
+                            <li><i class="fa-solid fa-yin-yang"></i> Autocontrol</li>
+                            <li><i class="fa-solid fa-bolt-lightning"></i> Espíritu indomable</li>
+                        </ul>
+                    </div>
+
+                    <div class="tkd-tags">
+                        <span><i class="fa-solid fa-shield-halved"></i> Disciplina</span>
+                        <span><i class="fa-solid fa-bolt"></i> Agilidad</span>
+                        <span><i class="fa-solid fa-heart"></i> Pasión</span>
+                    </div>
+                </div>
+                <div class="block-img" data-lightbox="imagenes/taekwondo.jpeg">
+                    <img src="imagenes/taekwondo.jpeg" alt="Taekwondo" loading="lazy">
+                    <div class="img-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                </div>
+            </div>
+
+            <!-- Música -->
+            <div class="music-section reveal">
+                <h2><i class="fa-solid fa-headphones"></i> Universos Musicales</h2>
+                <p class="subtitle">Mi gusto musical es polifacético y cambiante.</p>
+                <div class="music-grid">
+                    <div class="music-card">
+                        <div class="music-icon"><i class="fa-solid fa-record-vinyl"></i></div>
+                        <h4>Clásica & Concentración</h4>
+                        <p>Para lectura profunda y estudio de historia.</p>
+                    </div>
+                    <div class="music-card">
+                        <div class="music-icon"><i class="fa-solid fa-compact-disc"></i></div>
+                        <h4>K-Pop & Pop Global</h4>
+                        <p>Energía y ritmo para días activos.</p>
+                    </div>
+                    <div class="music-card">
+                        <div class="music-icon"><i class="fa-solid fa-radio"></i></div>
+                        <h4>Lo-Fi & Chill</h4>
+                        <p>Ideal para momentos creativos y dibujo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECCIÓN 2: LECTURA ============ -->
+        <section id="seccion-lectura" class="content-section">
+            <div class="section-header reveal">
+                <span class="section-kicker">📚 Rincón literario</span>
+                <h2>Mis Lecturas Favoritas</h2>
+                <p>Obras literarias, análisis profundo y reseñas en PDF</p>
+            </div>
+
+            <div class="books-grid">
+                <article class="book-card reveal">
+                    <div class="book-img-box" data-lightbox="imagenes/libro_pedro_paramo.jpg">
+                        <img src="imagenes/libro_pedro_paramo.jpg" alt="Pedro Páramo" loading="lazy">
+                        <div class="img-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="book-details">
+                        <span class="genre-tag">Realismo Mágico</span>
+                        <h3>Pedro Páramo</h3>
+                        <p class="author"><i class="fa-solid fa-pen-nib"></i> Juan Rulfo</p>
+                        <p class="summary">Una travesía mística hacia Comala, un pueblo donde los murmullos del pasado cobran vida.</p>
+                        <a href="pdf/pedro_paramo.pdf" target="_blank" rel="noopener" class="pdf-btn">
+                            <i class="fa-solid fa-file-pdf"></i> Leer reseña
+                        </a>
+                    </div>
+                </article>
+
+                <article class="book-card reveal">
+                    <div class="book-img-box" data-lightbox="imagenes/Cadaver_exquisito.jpg">
+                        <img src="imagenes/Cadaver_exquisito.jpg" alt="Cadáver Exquisito" loading="lazy">
+                        <div class="img-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="book-details">
+                        <span class="genre-tag">Distopía</span>
+                        <h3>Cadáver Exquisito</h3>
+                        <p class="author"><i class="fa-solid fa-pen-nib"></i> Agustina Bazterrica</p>
+                        <p class="summary">Una impactante narrativa distópica sobre la sociedad moderna y sus límites morales.</p>
+                        <a href="pdf/cadaver_exquisito.pdf" target="_blank" rel="noopener" class="pdf-btn">
+                            <i class="fa-solid fa-file-pdf"></i> Leer reseña
+                        </a>
+                    </div>
+                </article>
+
+                <article class="book-card reveal">
+                    <div class="book-img-box" data-lightbox="imagenes/crimen_castigo.jpg">
+                        <img src="imagenes/crimen_castigo.jpg" alt="Crimen y Castigo" loading="lazy">
+                        <div class="img-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                    <div class="book-details">
+                        <span class="genre-tag">Novela Psicológica</span>
+                        <h3>Crimen y Castigo</h3>
+                        <p class="author"><i class="fa-solid fa-pen-nib"></i> Fiódor Dostoyevski</p>
+                        <p class="summary">Una obra maestra sobre la culpa, la moralidad y la mente humana.</p>
+                        <a href="pdf/crimen_castigo.pdf" target="_blank" rel="noopener" class="pdf-btn">
+                            <i class="fa-solid fa-file-pdf"></i> Leer reseña
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ SECCIÓN 3: PASATIEMPOS ============ -->
+        <section id="seccion-pasatiempos" class="content-section">
+            <div class="section-header reveal">
+                <span class="section-kicker">🌍 Idiomas & Hobbies</span>
+                <h2>Mis Pasatiempos</h2>
+                <p>Aprender idiomas es construir puentes hacia nuevas culturas</p>
+            </div>
+
+            <div class="desert-banner reveal" style="background-image: url('imagenes/desierto.jpg');">
+                <div class="desert-overlay"></div>
+                <div class="desert-text">
+                    <h3><i class="fa-solid fa-globe"></i> Explorando Culturas del Mundo</h3>
+                    <p>Cada idioma abre una ventana diferente a la historia, el arte y la forma de ver el planeta.</p>
+                </div>
+            </div>
+
+            <!-- Idiomas -->
+            <div class="languages-container reveal">
+                <div class="languages-header">
+                    <div class="languages-title">
+                        <span class="languages-icon"><i class="fa-solid fa-language"></i></span>
+                        <div>
+                            <h3>Mi Progreso Lingüístico</h3>
+                            <p class="languages-subtitle">Idiomas que estoy aprendiendo y por qué me enamoran</p>
+                        </div>
+                    </div>
+                    <div class="languages-stats">
+                        <div class="stat"><strong>3</strong><span>Idiomas</span></div>
+                        <div class="stat"><strong>2</strong><span>Continentes</span></div>
+                    </div>
+                </div>
+
+                <div class="lang-list">
+                    <div class="lang-item">
+                        <div class="lang-top">
+                            <div class="lang-flag">🇬🇧</div>
+                            <div class="lang-info">
+                                <div class="lang-name">Inglés <span class="lang-native">English</span></div>
+                                <p class="lang-desc">El idioma global: ciencia, tecnología y cultura pop.</p>
+                            </div>
+                            <span class="lang-level">B2</span>
+                        </div>
+                        <div class="lang-header"><span class="lang-percent">75%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" data-width="75"></div></div>
+                    </div>
+
+                    <div class="lang-item">
+                        <div class="lang-top">
+                            <div class="lang-flag">🇮🇹</div>
+                            <div class="lang-info">
+                                <div class="lang-name">Italiano <span class="lang-native">Italiano</span></div>
+                                <p class="lang-desc">Arte, historia y la musicalidad del Renacimiento.</p>
+                            </div>
+                            <span class="lang-level">B1</span>
+                        </div>
+                        <div class="lang-header"><span class="lang-percent">75%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" data-width="75"></div></div>
+                    </div>
+
+                    <div class="lang-item">
+                        <div class="lang-top">
+                            <div class="lang-flag">🇷🇺</div>
+                            <div class="lang-info">
+                                <div class="lang-name">Ruso <span class="lang-native">Русский</span></div>
+                                <p class="lang-desc">Un desafío fascinante: literatura, alfabeto cirílico y cultura.</p>
+                            </div>
+                            <span class="lang-level">A1</span>
+                        </div>
+                        <div class="lang-header"><span class="lang-percent">18%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" data-width="18"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hobby-extra-card reveal">
+                <div class="extra-img" data-lightbox="imagenes/zorritos.jpg">
+                    <img src="imagenes/zorritos.jpg" alt="Naturaleza" loading="lazy">
+                    <div class="img-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                </div>
+                <div class="extra-text">
+                    <h4><i class="fa-solid fa-feather"></i> Dibujo & Naturaleza</h4>
+                    <p>Espacio dedicado a la observación, la vida silvestre y la creación artística a través del dibujo y la ilustración.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECCIÓN 4: SOBRE MÍ + CONTACTO ============ -->
+        <section id="seccion-sobre-mi" class="content-section">
+            <div class="section-header reveal">
+                <span class="section-kicker">💜 Sobre mí & Contacto</span>
+                <h2>Un poco más de Melanny</h2>
+                <p>Conoce mi historia y escríbeme si quieres conectar</p>
+            </div>
+
+            <!-- Sobre mí -->
+            <div class="about-grid reveal">
+                <div class="about-photo" data-lightbox="imagenes/paron.jpg">
+                    <img src="imagenes/paron.jpg" alt="Melanny" loading="lazy">
+                    <div class="about-photo-badge">
+                        <i class="fa-solid fa-star"></i>
+                        <span>Melanny</span>
+                    </div>
+                    <div class="img-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                </div>
+
+                <div class="about-info">
+                    <h3>¡Hola! Soy Melanny 👋</h3>
+                    <p>Soy una estudiante de grado 9° apasionada por descubrir el mundo, tanto a través de los libros como de los paisajes reales. Me encanta la historia antigua, las civilizaciones, el arte marcial y aprender idiomas nuevos.</p>
+                    <p>Cada sección de este sitio refleja una parte de mí: los viajes que sueño, los libros que me marcaron, los idiomas que estudio y las cosas que disfruto en mi día a día.</p>
+
+                    <div class="about-facts">
+                        <div class="fact">
+                            <i class="fa-solid fa-book-open"></i>
+                            <div><strong>Lectora</strong><span>Realismo mágico & distopía</span></div>
+                        </div>
+                        <div class="fact">
+                            <i class="fa-solid fa-user-ninja"></i>
+                            <div><strong>Taekwondo</strong><span>Disciplina y constancia</span></div>
+                        </div>
+                        <div class="fact">
+                            <i class="fa-solid fa-language"></i>
+                            <div><strong>Políglota</strong><span>3 idiomas en progreso</span></div>
+                        </div>
+                        <div class="fact">
+                            <i class="fa-solid fa-mountain-sun"></i>
+                            <div><strong>Viajera</strong><span>Amante de la naturaleza</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario de contacto -->
+            <div class="contact-wrap reveal">
+                <div class="contact-info">
+                    <h3><i class="fa-solid fa-paper-plane"></i> Hablemos</h3>
+                    <p>¿Tienes una recomendación de libro, un idioma que debería aprender o simplemente quieres saludar? Escríbeme.</p>
+
+                    <ul class="contact-list">
+                        <li><i class="fa-solid fa-envelope"></i> melanny@email.com</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Colombia 🇨🇴</li>
+                        <li><i class="fa-solid fa-graduation-cap"></i> Grado 9°</li>
+                    </ul>
+
+                    <div class="contact-social">
+                        <a href="#" class="social-btn instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-btn github" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo</label>
+                            <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" id="asunto" name="asunto" placeholder="¿De qué quieres hablar?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary form-btn">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar mensaje
+                    </button>
+
+                    <p class="form-status" id="formStatus" role="status"></p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-star"></i>
+                    <span>El Mundo de Melanny</span>
+                </div>
+                <p class="footer-tagline">Un rincón digital donde los viajes, los libros, el taekwondo y los idiomas se encuentran.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-btn instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-btn tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-btn github" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Explora</h4>
+                <ul class="footer-links">
+                    <li><a href="#seccion-mundo" data-target="seccion-mundo"><i class="fa-solid fa-chevron-right"></i> Mi Mundo</a></li>
+                    <li><a href="#seccion-lectura" data-target="seccion-lectura"><i class="fa-solid fa-chevron-right"></i> Mi Lectura</a></li>
+                    <li><a href="#seccion-pasatiempos" data-target="seccion-pasatiempos"><i class="fa-solid fa-chevron-right"></i> Mis Pasatiempos</a></li>
+                    <li><a href="#seccion-sobre-mi" data-target="seccion-sobre-mi"><i class="fa-solid fa-chevron-right"></i> Sobre mí</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul class="footer-links footer-contact">
+                    <li><i class="fa-solid fa-envelope"></i> melanny@email.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Colombia 🇨🇴</li>
+                    <li><i class="fa-solid fa-graduation-cap"></i> Grado 9°</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 <strong>El Mundo de Melanny</strong>. Todos los derechos reservados.</p>
+            <p>Hecho con <span class="heart">💜</span> y mucha curiosidad.</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose"><i class="fa-solid fa-xmark"></i></button>
+        <img src="" alt="Vista ampliada" id="lightboxImg">
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

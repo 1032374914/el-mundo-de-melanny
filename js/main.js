@@ -114,30 +114,66 @@ document.addEventListener('DOMContentLoaded', () => {
     initReveal();
 
     /* ==========================================================
-       6. BARRAS DE IDIOMAS
-    ========================================================== */
-    let langObserver;
+   6. BARRAS DE IDIOMAS (barra + contador numérico)
+========================================================== */
+let langObserver;
+const langTimers = new WeakMap();
 
-    function initLangBars() {
-        if (langObserver) langObserver.disconnect();
+function animateLangItem(item) {
+    const target = parseInt(item.getAttribute('data-progress'), 10) || 0;
+    const bar = item.querySelector('.bar-fill');
+    const percentText = item.querySelector('.lang-percent');
 
-        langObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.bar-fill').forEach(bar => {
-                        const w = bar.getAttribute('data-width') + '%';
-                        setTimeout(() => { bar.style.width = w; }, 150);
-                    });
-                    langObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
+    // Reset
+    if (bar) bar.style.width = '0%';
+    if (percentText) percentText.textContent = '0%';
 
-        document.querySelectorAll('.languages-container').forEach(el => langObserver.observe(el));
+    // Limpiar interval previo
+    const prev = langTimers.get(item);
+    if (prev) clearInterval(prev);
+
+    // Animar barra
+    setTimeout(() => { if (bar) bar.style.width = target + '%'; }, 100);
+
+    // Contador numérico
+    if (!percentText) return;
+    let current = 0;
+    const duration = 1200;
+    const stepTime = Math.max(1, Math.floor(duration / Math.max(target, 1)));
+    const timer = setInterval(() => {
+        current++;
+        percentText.textContent = current + '%';
+        if (current >= target) {
+            clearInterval(timer);
+            langTimers.delete(item);
+        }
+    }, stepTime);
+    langTimers.set(item, timer);
+}
+
+function initLangBars() {
+    if (langObserver) langObserver.disconnect();
+    const items = document.querySelectorAll('.lang-item');
+    if (!items.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+        items.forEach(animateLangItem);
+        return;
     }
 
-    initLangBars();
+    langObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateLangItem(entry.target);
+                langObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
 
+    items.forEach(el => langObserver.observe(el));
+}
+
+initLangBars();
     /* ==========================================================
        7. SCROLL PROGRESS + BACK TO TOP + PARALLAX
     ========================================================== */
